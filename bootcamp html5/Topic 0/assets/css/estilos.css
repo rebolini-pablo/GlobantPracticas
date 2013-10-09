@@ -1,0 +1,92 @@
+/**
+ * estilos.css
+ * @author Rebolini Pablo <rebolini.pablo@gmail.com>
+ */
+
+body{
+	font-family: sans-serif;
+}
+
+h1{
+	margin: 0;
+}
+
+h2{
+	display: inline;
+}
+
+.clearfix:before{
+	content: '.';
+	display: none;
+}
+.clearfix{
+	clear:both;
+}
+
+.wrapper{
+	width: 650px;
+	display: block;
+	padding: 0;
+	margin: 0 auto;
+}
+
+.wrapper header{
+	padding: 10px;
+	background: #F8F8F8;
+}
+
+.wrapper section aside{
+	float: left;
+	margin: 35px 0;
+	padding:10px;
+	display: inline-block;
+	border: 1px solid #000000;
+}
+
+.wrapper aside ul{
+	margin: 5px 0;
+	padding: 0 10px;
+	list-style: none;
+}
+
+.wrapper aside ul li:before{
+	content: '-';
+	margin: 0 5px 0 0;
+}
+
+.wrapper aside ul li a{
+	color: #000000;
+	text-decoration: none;
+}
+
+.wrapper aside ul li a:hover{
+	/**/
+	color: #999999;
+}
+
+.wrapper section article{
+	float: right;
+	margin: 35px 0;
+	padding: 10px;
+	display: inline-block;
+	border: 1px solid #000000;
+}
+
+.wrapper section article table tbody tr td,
+.wrapper section article table tfoot tr td{
+	font-size: 12px;
+}
+
+.wrapper section article table tr td{
+	padding: 5px;
+	margin: 5px;
+}
+
+.wrapper section article table tr td{
+	border: 1px dashed #999999;
+}
+
+.wrapper footer{
+	border-top:1px solid #000000;
+	
+}
