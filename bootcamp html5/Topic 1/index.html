@@ -17,14 +17,25 @@
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, repudiandae tempore reprehenderit facere optio iure incidunt necessitatibus nemo iste aperiam. Reprehenderit, optio nobis illum quos mollitia velit perspiciatis libero corporis.
 			</section>
 
-			<button class="js-welcome">
-				<a href="index.html">Home</a>
-			</button>
 
 			<section class="hidden">
 				Hello World!
 				<textarea cols="15" rows="1" class="alias" placeholder="Name..."></textarea>
 			</section>
+			
+			<section>
+				<button class="js-welcome">
+					<a href="index.html">Dar la bienvenida</a>
+				</button>
+			</section>
+
+			<hr />
+			<section>
+				<button>
+					<a href="ajax.html">Continuar con AJAX >></a>
+				</button>
+			</section>
+
 
 			<footer>
 				Lorem ipsum. All Right Reserved
@@ -65,9 +76,9 @@
 
 				});
 
-				$('.hidden').fadeIn('slow', function () {
+				$('.hidden').fadeIn(3000, function () {
 					$('.alias').focus();
-				});				
+				});					
 			});
 
 			var highlight = (function(text){
