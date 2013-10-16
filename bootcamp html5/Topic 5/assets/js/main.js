@@ -1,19 +1,28 @@
+/*jslint indent: 2, browser: true, white: true*/
+/*global require*/
+
 /**
- * Main.js
- * @author Rebolini Pablo <rebolini.pablo@gmail.com>
+ * RequireJS Config
  */
 require.config({
-    baseUrl: 'assets/js',
-    paths: {
-        jquery: 'vendor/jquery-1.10.2.min',
-    }
+  baseUrl: 'assets/js',
+  paths: {
+    jquery: 'vendor/jquery-1.10.2.min'
+  }
 });
 
-require(['Movie', 'Director'], function(Movie, Director){
-  var petter = new Movie()
-  ,   bombita = new Director('Bombita Rodriguez');
-  
-  bombita.set('quotes',[
+/**
+ * Main App Module
+ * @author Rebolini Pablo <rebolini.pablo@gmail.com>
+ * @param Movie
+ * @param Director
+ */
+require(['Movie', 'Director'], function (Movie, Director) {
+  "use strict";
+  var petter = new Movie(),
+    bombita = new Director('Bombita Rodriguez');
+    
+  bombita.set('quotes', [
     'Lorem',
     'Lorem impsum',
     'Lorem impsum dolor',

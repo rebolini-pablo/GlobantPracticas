@@ -1,48 +1,46 @@
-/**
- * Movie.js
- * @author Rebolini Pablo <rebolini.pablo@gmail.com>
- */
+/*jslint indent: 2, browser: true, white: false*/
+/*global console, movieObserver*/
 
 /**
- * Movie Module Pattern
+ * Movie.js Module
+ * @author Rebolini Pablo <rebolini.pablo@gmail.com>
+ * @param movieObserver
  */
-var Movie = (function(movieObserver) {
-  var movie = []
-  ,   actors= [];
+var Movie = (function (movieObserver) {
+  "use strict";
+  var movie = [],
+    actors = [];
 
   // Binding the events...
-  movieObserver.subscribe('playing', function(title) {
-   console.log('Playing: ' + title);
+  movieObserver.subscribe('playing', function (title) {
+    console.log('Playing: ' + title);
   });
 
-  movieObserver.subscribe('stopped', function() {
-   console.log('Stopped...!');
-  }); 
+  movieObserver.subscribe('stopped', function () {
+    console.log('Stopped...!');
+  });
 
-  return{
-    set: function(str, val) {
+  return {
+    set: function (str, val) {
 
-      // In case of val was type of object
-      // and has 'getAll' property
-      // assign the content of this instead
-      // of the complete object
-      if(val.hasOwnProperty('getAll')){
+      // En caso de que 'val' sea un objeto
+      // x ej: de tipo Actor
+      if (val.hasOwnProperty('getAll')) {
         val = val.getAll();
       }
 
       movie[str] = val;
     },
-    
-    get: function(str) {
-      if(! movie[str]) throw new Error('Invalid Param Suplied');
+    get: function (str) {
+      if (!movie[str]) throw new Error(str + ' ' + 'Propiedad no existente');
       return movie[str];
     },
 
-    play: function() {
+    play: function () {
       movieObserver.publish('playing', [this.get('title')]);
     },
 
-    stop: function() {
+    stop: function () {
       movieObserver.publish('stopped', []);
     }
   };
@@ -85,3 +83,5 @@ var Movie = (function(movieObserver) {
 // Movie.prototype.stop = function() {
 //  this.movieObserver.publish('stopped', []);  
 // };
+
+// return Movie;

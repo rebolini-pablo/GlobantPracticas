@@ -1,32 +1,37 @@
+/*jslint indent: 2, browser: true, white: false*/
+/*global $*/
+
 /**
- * movieObserver Module pattern
+ * movieObserver.js Module
+ * @author Rebolini Pablo <rebolini.pablo@gmail.com>
+ * @param $
  */
-var movieObserver = (function($) {
+var movieObserver = (function ($) {
+  "use strict";
   var cache = {}; // Cache of 'events'
 
-  return{
-    publish: function(event, args) {
-      if(!cache[event]) throw new Error('Nobody was suscribed to this event');
+  return {
+    publish: function (event, args) {
+      if (!cache[event]) throw new Error ('Nobody was suscribed to this event');
 
-      $.each(cache[event], function() {
+      $.each(cache[event], function () {
         this.apply(undefined, args);
       });
     },
 
-    subscribe: function(event, callback){
-      if(typeof callback !== 'function') throw new Error('Callback must be a function');
+    subscribe: function (event, callback) {
+      if (typeof callback !== 'function') throw new Error ('Callback must be a function');
       
-      if(!cache[event]){
+      if (!cache[event]) {
         cache[event] = [];
       }
       
       cache[event].push(callback);
     },
 
-    unsubscribe: function(event) {
-      if(!cache[event]) throw new Error('Invalid or inexistent event');
-      
-      delete(cache[event]);
+    unsubscribe: function (event) {
+      if (!cache[event]) throw new Error ('Invalid or inexistent event');
+      delete (cache[event]);
     }
   };
 }($));

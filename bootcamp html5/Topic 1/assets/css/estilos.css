@@ -101,6 +101,7 @@ button a{
 	 display: -webkit-box;
 	 display: box;
 }
+
 .wrapper .tweets-list article .author {
 	color: #999;
 	font-size: 12px;
@@ -135,5 +136,4 @@ button a{
 
 .wrapper footer{
 	border-top:1px solid #000000;
-	
 }

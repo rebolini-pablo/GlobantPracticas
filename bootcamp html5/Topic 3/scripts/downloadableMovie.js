@@ -1,15 +1,15 @@
-/**
- * downloadableMovie.js
- * @author Rebolini Pablo <rebolini.pablo@gmail.com>
- */
+/*jslint indent: 2, browser: true, white: false*/
+/*global console, movieObserver, Movie*/
 
 /**
- * Movie Module Pattern
+ * downloadableMovie.js Module
+ * @author Rebolini Pablo <rebolini.pablo@gmail.com>
+ * @param Movie
  */
-var downloadableMovie = (function(Movie) {
-  Movie.download = function() {
+var downloadableMovie = (function (Movie) {
+  "use strict";
+  Movie.download = function () {
     console.log('Downloading movie...');
   };
-  
   return Movie;
 }(Movie || {}));

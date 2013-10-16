@@ -25,7 +25,7 @@
 			
 			<section>
 				<button class="js-welcome">
-					<a href="index.html">Dar la bienvenida</a>
+					Dar la bienvenida
 				</button>
 			</section>
 
@@ -42,7 +42,7 @@
 			</footer>		
 		</div>
 
-		<!-- jQuery Lastest -->
+		<!-- jQuery -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		<script>
 			$(document).ready(function () {
@@ -50,38 +50,56 @@
 				,	url  = 'http://bootcamp.aws.af.cm/welcome/'
 				,	$ts  = $('.top-section');
 
-				$('.js-welcome').on('click', function (e){
-					e.preventDefault();
+				/** Textarea Fade-in & Focus **/
+				$('.hidden').fadeIn(3000, function () {
+					$('.alias').focus();
+				});	
+
+
+				/** Boton de bienvenida **/
+				$('.js-welcome').on('click', function (e) {
+
+
+					// Nombre ingresado
+					// en el textarea...
 					name = $('.alias').val();
 
-					// Validacion
-					if(name.length === 0){
-						$ts.addClass('error-text').html('Name cannot be empty');
+					// Pequeña validacion
+					if(name.length === 0) {
+						$ts.addClass('error-text')
+							 .html('Name cannot be empty');
+
 						return;
 					}
 
+					// Desactivamos el boton
+					this.disabled = true;
+
+					// Solicitud
 					$.get(url + name, function (data){
 
-						// Quitamos la clase error-text si estubiera
-						// e inyectamos el span con el response...						
-						$ts.removeClass('error-text').html(data.response);
+						// Quitamos la clase error-text si estuviera
+						// e inyectamos el response...						
+						$ts.removeClass('error-text')
+							 .html(data.response);
 						
 						// Resaltamos el nombre
 						highlight(name);
 
 					}, 'json').fail(function () {
+						// Si falla colocamos un mensaje de error...
 						$ts.addClass('error-text')
 						   .html('Ups... Error !');
 					});
 
-				});
+					// Habilitamos el boton nuevamente
+					this.disabled = false;
 
-				$('.hidden').fadeIn(3000, function () {
-					$('.alias').focus();
-				});					
+				});			
 			});
-
-			var highlight = (function(text){
+		
+			// Funcion para resaltar texto
+			var highlight = (function(text) {
 				var content = $('.top-section').html();
 				$('.top-section').html(content.replace(text, "<span class='highlight'>"+text+"</a>"));
 			});

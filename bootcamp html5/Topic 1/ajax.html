@@ -23,8 +23,6 @@
       <section class="pull-right tweets-list"></section>
       <div class="clearfix">&nbsp;</div>
 
-
-
       <footer>
         Lorem ipsum. All Right Reserved
       </footer>   
@@ -35,38 +33,40 @@
     <script>
       // from_user, text, created_at, profile_image_url
       $(document).ready(function () {
-        var url = 'http://tweetproxy.ap01.aws.af.cm/search'
-        ,   tpl = $('#template').html()
-        ,   parsed;
+        var url = 'http://tweetproxy.ap01.aws.af.cm/search',
+          tpl = $('#template').html(),
+          parsed;
 
         $.ajax({
-            type: "GET",
-            url: url,
-            data: {'q':'html5'},
-            dataType: 'jsonp'
-          }).done(function (data) {
+          type: "GET",
+          url: url,
+          data: {'q': 'html5'},
+          dataType: 'jsonp'
+        })
+        
+        .done(function (data) {
+          if (!data.hasOwnProperty('statuses')) {
+            throw new Error ('Estructura de Tweets erronea !');
+          }
 
-            if(!data.hasOwnProperty('statuses')){
-              throw new Error('Malformed Tweet structure !');
-            }
+          // Punto 11
+          //console.log(data);
 
-            // Punto 11
-            //console.log(data);
+          $.each(data.statuses, function (i, e) {
+            parsed = tpl.replace('{profile_image_url}', e.user.profile_image_url)
+                        .replace('{from_user}', e.user.name)
+                        .replace('{created_at}', e.created_at)
+                        .replace('{text}', e.text);
 
-            $.each(data.statuses, function (i, e) {
-              parsed = tpl.replace('{profile_image_url}', e.user.profile_image_url)
-                          .replace('{from_user}', e.user.name)
-                          .replace('{created_at}', e.created_at)
-                          .replace('{text}', e.text);
-
-              $('.tweets-list').append(parsed);
-            });
-          }).fail(function () {
-            $('.tweets-list').addClass('error-text')
-                             .html('Se ha producido un error!');
+            $('.tweets-list').append(parsed);
           });
 
-
+        })
+        
+        .fail(function () {
+          $('.tweets-list').addClass('error-text')
+                           .html('Se ha producido un error!');
+        });
       });
     </script>
 
