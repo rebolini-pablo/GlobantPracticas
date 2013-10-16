@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Topic 3: Design Patterns and OOP in Javascript</title>
+  <style>
+    body{
+      padding: 50px;
+    }
+
+    h1,
+    h2,
+    h3{
+      font-family: sans-serif;
+      margin: 5px 0px;
+    }
+
+  code {
+    white-space: pre;
+    padding: 10px;
+    background: #E7FFE9;
+    display: inline-block;
+    color: #000;
+    font-weight: bolder;
+    text-rendering: optimizeLegibility;
+  }
+  </style>
+</head>
+<body>
+  <h1>Topic 3: Design Patterns and OOP in Javascript</h1>
+  <h2>&nbsp;Pablo Rebolini</h2>
+
+  <code>
+    // Load mixin social
+    Social.call(Movie.prototype);
+
+    (function() {
+      var petter = Movie
+      ,   actors = Actor;
+      
+      actors.add(['Petter Capusotto', 'Bombita Rodriguez', 'Violencia Rivas']);
+      
+      petter.set('title', 'Petter Capusotto y sus 3 dimensiones');
+      petter.set('actors', actors);
+      petter.play();
+      petter.like();
+      petter.share('Pomelo');
+
+    }());    
+  </code>
+  <h3>Results in console</h3>
+
+  <script src="scripts/jquery.js"></script>
+  <script src="scripts/movieObserver.js"></script>
+  <script src="scripts/Movie.js"></script>
+  <script src="scripts/Actor.js"></script>
+  <script src="scripts/downloadableMovie.js"></script>
+  <script src="scripts/Social.js"></script>
+  <script>
+    // Load mixin social
+    Social.call(Movie.prototype);
+
+    (function() {
+      // Como instanciar un objeto 
+      // que hace uso del module pattern? 
+      //var petter = new movie(); -> Uncaught TypeError: object is not a function
+      var petter = Movie
+      ,   actors = Actor;
+      
+      actors.add(['Petter Capusotto', 'Bombita Rodriguez', 'Violencia Rivas']);
+      
+      petter.set('title', 'Petter Capusotto y sus 3 dimensiones');
+      petter.set('actors', actors);
+      petter.play();
+      petter.like();
+      petter.share('Pomelo');
+
+      console.log('Actors in ' + petter.get('title') + ': ' + petter.get('actors'));
+    }());
+  </script>
+</body>
+</html>
