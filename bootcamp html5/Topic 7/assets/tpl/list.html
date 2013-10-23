@@ -1,0 +1,5 @@
+<ul>
+  <% _.each(movie, function(movie){ %>
+    <li class="movie"><a href="movie/<%= movie.id %>"><%= movie.title %></a></li>
+  <% }); %>
+</ul>

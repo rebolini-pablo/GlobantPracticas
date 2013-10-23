@@ -1,0 +1,22 @@
+{
+ "movies":[
+  {
+    "id": 1,
+    "title": "Fear and loasting in las vegas",
+    "desc": "Lorem impsum dolor sit amet...",
+    "img": "http://placehold.it/150x150"
+  },
+  {
+    "id": 2,
+    "title": "catch me if you cant",
+    "desc": "Lorem impsum dolor sit amet...",
+    "img": "http://placehold.it/150x150"
+  },
+  {
+    "id": 3,
+    "title": "The Almonds adventures",
+    "desc": "Lorem impsum dolor sit amet...",
+    "img": "http://placehold.it/150x150"
+  }
+ ]
+}
